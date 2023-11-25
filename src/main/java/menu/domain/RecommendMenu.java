@@ -1,12 +1,13 @@
 package menu.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecommendMenu {
 
 	String userName;
 	List<String> dislikeMenu;
-	List<String> menus;
+	List<String> menus = new ArrayList<>();
 
 	public RecommendMenu(String userName, List<String> dislikeMenu) {
 		this.userName = userName;
