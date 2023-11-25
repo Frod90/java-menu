@@ -15,12 +15,12 @@ public enum DefaultMenu {
 
 	private final String category;
 	private final int categorySign;
-	private final List<String> defaultMenu;
+	private final List<String> details;
 
-	DefaultMenu(String category, int categorySign, List<String> defaultMenu) {
+	DefaultMenu(String category, int categorySign, List<String> details) {
 		this.category = category;
 		this.categorySign = categorySign;
-		this.defaultMenu = defaultMenu;
+		this.details = details;
 	}
 
 	public String getCategory() {
@@ -31,8 +31,8 @@ public enum DefaultMenu {
 		return categorySign;
 	}
 
-	public List<String> getDefaultMenu() {
-		return defaultMenu;
+	public List<String> getDetails() {
+		return details;
 	}
 
 }
