@@ -2,13 +2,13 @@ package menu.domain;
 
 import java.util.List;
 
-public class Recommend {
+public class RecommendMenu {
 
 	String userName;
 	List<String> dislikeMenu;
 	List<String> menus;
 
-	public Recommend(String userName, List<String> dislikeMenu) {
+	public RecommendMenu(String userName, List<String> dislikeMenu) {
 		this.userName = userName;
 
 		validateDislikeMenuSize(dislikeMenu);

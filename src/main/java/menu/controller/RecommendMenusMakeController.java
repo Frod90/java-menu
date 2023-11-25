@@ -3,16 +3,16 @@ package menu.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import menu.domain.Recommend;
+import menu.domain.RecommendMenu;
 import menu.input.InputMachine;
 import menu.util.InputTransducer;
 import output.ErrorMessagePrinter;
 
-public class RecommendMakeController {
+public class RecommendMenusMakeController {
 
-	List<Recommend> recommends = new ArrayList<>();
+	List<RecommendMenu> recommendMenus = new ArrayList<>();
 
-	public List<Recommend> makeCorrect(List<String> userNames) {
+	public List<RecommendMenu> makeCorrect(List<String> userNames) {
 
 		for(String eachUserName : userNames) {
 
@@ -24,7 +24,7 @@ public class RecommendMakeController {
 			} while (errorSign);
 		}
 
-		return recommends;
+		return recommendMenus;
 	}
 
 	private boolean hasError(String userName) {
@@ -33,8 +33,8 @@ public class RecommendMakeController {
 			String inputDislikeMenu = InputMachine.inputDislikeMenu(userName);
 			List<String> dislikeMenu = InputTransducer.toList(inputDislikeMenu);
 
-			Recommend recommend = new Recommend(userName, dislikeMenu);
-			recommends.add(recommend);
+			RecommendMenu recommendMenu = new RecommendMenu(userName, dislikeMenu);
+			recommendMenus.add(recommendMenu);
 
 		}catch (IllegalArgumentException illegalArgumentException) {
 			ErrorMessagePrinter.printDislikeMenuSizeError();
