@@ -26,8 +26,9 @@ public class UserNameController {
 
 		try{
 			String inputUserNames = InputMachine.inputUserName();
-			userNames = InputTransducer.toList(inputUserNames);
+			validateSeparator(inputUserNames);
 
+			userNames = InputTransducer.toList(inputUserNames);
 			validateUserName(userNames);
 
 		}catch (IllegalArgumentException illegalArgumentException) {
@@ -35,6 +36,13 @@ public class UserNameController {
 		}
 
 		return false;
+	}
+
+	private void validateSeparator(String inputUserNames) {
+		if(!inputUserNames.contains(",")) {
+			ErrorMessagePrinter.printInputFormatError();
+			throw new IllegalArgumentException();
+		}
 	}
 
 	private void validateUserName(List<String> userNames) {
