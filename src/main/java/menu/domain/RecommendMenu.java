@@ -39,16 +39,16 @@ public class RecommendMenu {
 		menus.add(menu);
 	}
 
-	public String getUserName() {
-		return userName;
-	}
-
-	public List<String> getDislikeMenu() {
-		return dislikeMenu;
-	}
-
-	public List<String> getMenus() {
-		return menus;
+	public String toString() {
+		return String.format(
+			"[ %s | %s | %s | %s | %s | %s ]",
+			userName,
+			menus.get(0),
+			menus.get(1),
+			menus.get(2),
+			menus.get(3),
+			menus.get(4)
+			);
 	}
 
 }
