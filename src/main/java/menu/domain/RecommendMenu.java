@@ -3,6 +3,8 @@ package menu.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import menu.constant.DefaultMenu;
+
 public class RecommendMenu {
 
 	String userName;
@@ -13,14 +15,45 @@ public class RecommendMenu {
 		this.userName = userName;
 
 		validateDislikeMenuSize(dislikeMenu);
-		this.dislikeMenu = dislikeMenu;
 
+		if (!dislikeMenu.get(0).isBlank()) {
+			validateDislikeMenu(dislikeMenu);
+		}
+
+		this.dislikeMenu = dislikeMenu;
 	}
 
 	private void validateDislikeMenuSize(List<String> dislikeMenu) {
 		if (2 < dislikeMenu.size()) {
 			throw new IllegalArgumentException();
 		}
+	}
+
+	private void validateDislikeMenu(List<String> dislikeMenu) {
+
+		for (String eachDislikeMenu : dislikeMenu) {
+			String category = matchDefaultMenu(eachDislikeMenu);
+
+			if (category.isBlank()) {
+				throw new IllegalArgumentException();
+			}
+		}
+	}
+
+	private String matchDefaultMenu(String menu) {
+
+		String category = "";
+
+		for (DefaultMenu defaultMenu : DefaultMenu.values()) {
+
+			List<String> defaultMenuDetails = defaultMenu.getDetails();
+
+			if (defaultMenuDetails.contains(menu)) {
+				category = defaultMenu.getCategory();
+			}
+		}
+
+		return category;
 	}
 
 	public void generateCorrectMenu(String category) {
@@ -48,7 +81,7 @@ public class RecommendMenu {
 			menus.get(2),
 			menus.get(3),
 			menus.get(4)
-			);
+		);
 	}
 
 }
